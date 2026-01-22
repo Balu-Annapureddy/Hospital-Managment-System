@@ -1,0 +1,28 @@
+# Backend
+hospital-management-backend/target/
+hospital-management-backend/.mvn/
+hospital-management-backend/mvnw
+hospital-management-backend/mvnw.cmd
+hospital-management-backend/*.jar
+hospital-management-backend/*.properties
+
+# Frontend
+hospital-management-frontend/node_modules/
+hospital-management-frontend/dist/
+hospital-management-frontend/dist-ssr/
+hospital-management-frontend/*.local
+hospital-management-frontend/.env
+
+# IDE & OS
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+
+# Documentation
+documentation/phase-logs/
