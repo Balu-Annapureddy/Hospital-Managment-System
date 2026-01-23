@@ -10,7 +10,8 @@ import {
     Divider,
     CircularProgress,
     Alert,
-    IconButton
+    IconButton,
+    Stack
 } from '@mui/material';
 import {
     ArrowBack as ArrowBackIcon,
@@ -235,6 +236,7 @@ const PatientForm = () => {
                                     value={formData.phone}
                                     onChange={handleChange}
                                     required
+                                    helperText="Primary contact number"
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
@@ -245,6 +247,7 @@ const PatientForm = () => {
                                     type="email"
                                     value={formData.email}
                                     onChange={handleChange}
+                                    helperText="Optional - for appointment notifications"
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -348,8 +351,5 @@ const PatientForm = () => {
         </PageContainer>
     );
 };
-
-// Internal Import for Stack
-import { Stack } from '@mui/material';
 
 export default PatientForm;

@@ -7,7 +7,8 @@ import {
     IconButton,
     Tooltip,
     Chip,
-    Stack
+    Stack,
+    Typography
 } from '@mui/material';
 import {
     Search as SearchIcon,
@@ -137,9 +138,6 @@ const PatientList = () => {
             )
         },
     ];
-
-    // Helper for inner Typography
-    import { Typography } from '@mui/material';
 
     return (
         <PageContainer

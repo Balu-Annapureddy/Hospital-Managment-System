@@ -10,7 +10,8 @@ import {
     CircularProgress,
     InputAdornment,
     IconButton,
-    Container
+    Container,
+    Avatar
 } from '@mui/material';
 import {
     Visibility,
@@ -158,8 +159,5 @@ const LoginPage = () => {
         </Box>
     );
 };
-
-// Helper for circular dependency (Avatar used but not imported in thought, adding it here)
-import Avatar from '@mui/material/Avatar';
 
 export default LoginPage;

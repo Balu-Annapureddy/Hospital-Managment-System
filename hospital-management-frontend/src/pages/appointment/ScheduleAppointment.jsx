@@ -10,7 +10,8 @@ import {
     Divider,
     CircularProgress,
     Alert,
-    Autocomplete
+    Autocomplete,
+    InputAdornment
 } from '@mui/material';
 import {
     ArrowBack as ArrowBackIcon,
@@ -277,7 +278,5 @@ const ScheduleAppointment = () => {
         </PageContainer>
     );
 };
-
-// Internal Import for InputAdornment (if needed, but already imported above)
 
 export default ScheduleAppointment;

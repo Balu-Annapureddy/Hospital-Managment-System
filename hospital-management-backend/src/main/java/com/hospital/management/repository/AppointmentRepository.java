@@ -73,4 +73,9 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
      * Count appointments by doctor
      */
     long countByDoctorId(Long doctorId);
+
+    /**
+     * Count appointments by patient
+     */
+    long countByPatientId(Long patientId);
 }
