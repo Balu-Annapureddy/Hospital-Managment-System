@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
  * DTO for doctor dashboard statistics
  */
@@ -17,4 +19,5 @@ public class DoctorDashboardResponse {
     private long completedAppointments;
     private long totalPatientsTreated;
     private long medicalRecordsCreated;
+    private List<AppointmentResponse> todayAppointmentsList;
 }

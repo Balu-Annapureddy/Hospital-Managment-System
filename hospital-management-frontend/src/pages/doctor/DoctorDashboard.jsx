@@ -32,12 +32,10 @@ const DoctorDashboard = () => {
     const fetchDashboardData = async () => {
         try {
             setLoading(true);
-            const [statsData, appointmentsData] = await Promise.all([
-                dashboardAPI.getMyDoctorDashboard(),
-                appointmentAPI.getTodaysAppointments()
-            ]);
+            const statsData = await dashboardAPI.getMyDoctorDashboard();
             setStats(statsData);
-            setTodayAppointments(appointmentsData);
+            // Use today's appointments from the dashboard stats
+            setTodayAppointments(statsData.todayAppointmentsList || []);
             setError('');
         } catch (err) {
             console.error('Error fetching doctor dashboard:', err);

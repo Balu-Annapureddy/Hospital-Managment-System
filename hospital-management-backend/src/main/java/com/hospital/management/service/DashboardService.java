@@ -42,6 +42,9 @@ public class DashboardService {
     @Autowired
     private MedicalRecordRepository medicalRecordRepository;
 
+    @Autowired
+    private AppointmentService appointmentService;
+
     /**
      * Get admin dashboard statistics
      */
@@ -109,6 +112,11 @@ public class DashboardService {
 
         // Medical records created
         response.setMedicalRecordsCreated(medicalRecordRepository.countByDoctorId(doctorId));
+
+        // Today's appointments list
+        response.setTodayAppointmentsList(
+            appointmentService.getTodaysAppointmentsByDoctor(doctorId)
+        );
 
         return response;
     }
