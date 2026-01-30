@@ -3,6 +3,8 @@ package com.hospital.management.controller;
 import com.hospital.management.dto.request.LoginRequest;
 import com.hospital.management.dto.request.RegisterRequest;
 import com.hospital.management.dto.response.AuthResponse;
+import com.hospital.management.entity.User;
+import com.hospital.management.repository.UserRepository;
 import com.hospital.management.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,6 +26,9 @@ public class AuthController {
 
     @Autowired
     private AuthService authService;
+
+    @Autowired
+    private UserRepository userRepository;
 
     /**
      * Login endpoint
@@ -47,6 +53,28 @@ public class AuthController {
         response.put("userId", userId);
         
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    /**
+     * Get users by role
+     * GET /api/auth/users/role/{role}
+     */
+    @GetMapping("/users/role/{role}")
+    public ResponseEntity<List<User>> getUsersByRole(@PathVariable String role) {
+        User.UserRole userRole = User.UserRole.valueOf(role.toUpperCase());
+        List<User> users = userRepository.findByRoleAndActiveTrue(userRole);
+        return ResponseEntity.ok(users);
+    }
+
+    /**
+     * Get user by ID
+     * GET /api/auth/users/{id}
+     */
+    @GetMapping("/users/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
+        return ResponseEntity.ok(user);
     }
 
     /**

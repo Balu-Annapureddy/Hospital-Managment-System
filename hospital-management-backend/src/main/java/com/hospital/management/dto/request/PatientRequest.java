@@ -32,7 +32,7 @@ public class PatientRequest {
     private Gender gender;
 
     @NotBlank(message = "Phone number is required")
-    @Pattern(regexp = "^[0-9]{10,20}$", message = "Phone number must be 10-20 digits")
+    @Pattern(regexp = "^[0-9+\\-\\s()]{10,20}$", message = "Phone number must be 10-20 characters")
     private String phone;
 
     @Email(message = "Email must be valid")
@@ -42,7 +42,7 @@ public class PatientRequest {
     @Size(max = 500, message = "Address must not exceed 500 characters")
     private String address;
 
-    @Pattern(regexp = "^(A|B|AB|O)[+-]$", message = "Blood group must be valid (e.g., A+, B-, O+)")
+    @Pattern(regexp = "^(A|B|AB|O)[+-]?$|^$", message = "Blood group must be valid (e.g., A+, B-, O+, AB-) or empty")
     private String bloodGroup;
 
     @Size(max = 1000, message = "Medical history must not exceed 1000 characters")
@@ -54,6 +54,7 @@ public class PatientRequest {
     @Size(max = 100, message = "Emergency contact name must not exceed 100 characters")
     private String emergencyContact;
 
-    @Pattern(regexp = "^[0-9]{10,20}$", message = "Emergency phone must be 10-20 digits")
+    @Pattern(regexp = "^[0-9+\\-\\s()]{10,20}$|^$", message = "Emergency phone must be 10-20 characters or empty")
     private String emergencyPhone;
 }
+
